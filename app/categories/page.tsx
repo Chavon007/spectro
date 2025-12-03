@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Catesidebar from "@/component/catesidebar";
+import Cars from "@/component/car";
 
 type categoryType = "cars" | "jeans" | "accessories";
 function Maincategory() {
@@ -8,7 +9,7 @@ function Maincategory() {
 
   const rendercategoey = () => {
     if (selected === "cars") {
-      return <p>All the cars</p>;
+      return <Cars />;
     }
     if (selected === "accessories") {
       return <p>All Accessories</p>;
@@ -18,8 +19,8 @@ function Maincategory() {
     }
   };
   return (
-    <div className="flex justify-center">
-      <div className="w-[40%]">
+    <div className="flex ">
+      <div className="w-[25%]">
         <Catesidebar onSelect={setSelected} />
       </div>
 
