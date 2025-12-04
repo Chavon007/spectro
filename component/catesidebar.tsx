@@ -13,15 +13,15 @@ function Catesidebar({ onSelect }: sidebarProps) {
             Select categories to see product
           </p>
         </div>
-        <div className=" flex flex-col h-auto  gap-4 py-[10px]">
+        <div className=" flex mx-auto md:mx-[0] md:flex-col h-auto  gap-4 py-[10px]">
           <h5
-            className="border-b-1 border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic"
+            className="md:border-b-1 md:border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic"
             onClick={() => onSelect("cars")}
           >
             Cars
           </h5>
           <h5
-            className="border-b-1 border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic"
+            className="md:border-b-1 md:border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic"
             onClick={() => onSelect("jeans")}
           >
             Jeans
