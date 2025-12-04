@@ -28,7 +28,7 @@ function Header() {
   const [menu, setMenu] = useState(false);
 
   return (
-    <div className="w-[100%] h- auto p-[10px] bg-[#f1f1f0] border-b-1 border-gray-800">
+    <div className="w-[100%] h- auto p-[10px] bg-[#f1f1f0] border-b-1 border-gray-800 ">
       <div className="w-[95%] mx-auto flex justify-between items-center">
         {/* logo */}
         <div className=" w-[10%] p-[10px]">

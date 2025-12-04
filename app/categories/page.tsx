@@ -19,12 +19,13 @@ function Maincategory() {
     }
   };
   return (
-    <div className="flex ">
-      <div className="w-[25%]">
-        <Catesidebar onSelect={setSelected} />
-      </div>
+    <div className="flex bg-[#f1f1f0] ">
+     <div className="w-[25%] shadow-[4px_0_10px_rgba(0,0,0,0.2)]">
+  <Catesidebar onSelect={setSelected} />
+</div>
 
-      <div className="w-[60%]">{rendercategoey()}</div>
+
+      <div className="w-[90%] mx-auto ">{rendercategoey()}</div>
     </div>
   );
 }

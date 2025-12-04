@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
 type productCard = {
   name: string;
   image: string[];
@@ -8,13 +11,54 @@ type productCard = {
 };
 
 function Card({ name, image, price, link }: productCard) {
+  const [currrentImage, setCurrentImage] = useState(0);
+  const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    if (!hover) {
+      setCurrentImage(0);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev === image.length - 1 ? 0 : prev + 1));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [hover, image.length]);
   return (
-    <div>
-      <Image src={image[0]} alt={name} width={100} height={100} />
-      <h3>{name}</h3>
-      <p>{price}</p>
-      <Link href={link}>Order via Whatsapp</Link>
+    <div className="bg-red-white  shadow-md rounded-xl overflow-hidden hover:shadow-lg transition duration-300">
+      <div
+        className="relative w-full h-48"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <Image
+          src={image[currrentImage]}
+          alt={name}
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      <div className="p-4">
+        <h3 className="font-semibold text-base font-lora text-gray-800">
+          {name}
+        </h3>
+
+        <p className="text-sm font-semibold font-inter mt-[10px] text-blue-700">
+          ₦{price.toLocaleString()}
+        </p>
+
+        <Link
+          href={link}
+          className="mt-3 font-lora block text-center bg-red-600 hover:bg-red-500 transition-colors text-white py-2 rounded-lg"
+        >
+          Order via WhatsApp
+        </Link>
+      </div>
     </div>
   );
 }
+
 export default Card;

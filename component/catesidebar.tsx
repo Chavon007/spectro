@@ -6,7 +6,7 @@ interface sidebarProps {
 
 function Catesidebar({ onSelect }: sidebarProps) {
   return (
-    <div className="bg-[#f1f1f0] w-[100%] h-[100vh] border-r-1 border-gray-800">
+    <div className="bg-[#f1f1f0] w-[100%] ">
       <div className="w-[90%] mx-auto flex flex-col gap-2  ">
         <div className="mt-[10px] p-[10px] ">
           <p className="text-gray-400 italic text-4xl p-[10px] font-bold font-roboto">

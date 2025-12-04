@@ -1,4 +1,5 @@
 import Card from "./card";
+import { FaCar } from "react-icons/fa";
 
 const carproduct = [
   {
@@ -170,16 +171,25 @@ const carproduct = [
 
 function Cars() {
   return (
-    <div>
-      {carproduct.map((car, index) => (
-        <Card
-          key={index}
-          image={car.image}
-          name={car.name}
-          price={car.price}
-          link={car.link}
-        />
-      ))}
+    <div className="px-4 py-6">
+      <div className="flex items-center gap-2 mb-4">
+        <span className="text-green-600 text-2xl">
+          <FaCar />
+        </span>
+        <h3 className="text-xl font-bold">Our Car Store</h3>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-[100%] ">
+        {carproduct.map((car, index) => (
+          <Card
+            key={index}
+            image={car.image}
+            name={car.name}
+            price={car.price}
+            link={car.link}
+          />
+        ))}
+      </div>
     </div>
   );
 }
