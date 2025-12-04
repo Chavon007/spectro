@@ -15,19 +15,19 @@ function Catesidebar({ onSelect }: sidebarProps) {
         </div>
         <div className=" flex mx-auto md:mx-[0] md:flex-col h-auto  gap-4 py-[10px]">
           <h5
-            className="md:border-b-1 md:border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic"
+            className="cursor-pointer md:border-b-1 md:border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic hover:text-gray-800"
             onClick={() => onSelect("cars")}
           >
             Cars
           </h5>
           <h5
-            className="md:border-b-1 md:border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic"
+            className="cursor-pointer md:border-b-1 md:border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic hover:text-gray-800"
             onClick={() => onSelect("jeans")}
           >
             Jeans
           </h5>
           <h5
-            className=" p-[10px] text-2xl font-lora text-gray-500 italic"
+            className="cursor-pointer md:border-b-1 md:border-gray-500 p-[10px] text-2xl font-lora text-gray-500 italic hover:text-gray-800"
             onClick={() => onSelect("accessories")}
           >
             Accesories

@@ -29,19 +29,22 @@ function Card({ name, image, price, link }: productCard) {
   return (
     <div className="bg-red-white  shadow-md rounded-xl overflow-hidden hover:shadow-lg transition duration-300">
       <div
-        className="relative w-full h-48"
+        className="relative w-full"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
         <Image
           src={image[currrentImage]}
           alt={name}
-          fill
+         width={1000}
+         height={1000}
+         style={{width:"100%", height:"300px"}}
           className="object-cover"
+          
         />
       </div>
 
-      <div className="p-4">
+      <div className="p-4 ">
         <h3 className="font-semibold text-base font-lora text-gray-800">
           {name}
         </h3>

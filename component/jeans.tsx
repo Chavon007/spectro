@@ -164,10 +164,12 @@ function Jeans() {
   return (
     <div className="px-4 py-6">
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-green-600 text-2xl">
+        <span className="text-gray-700  text-3xl">
           <GiTrousers />
         </span>
-        <h3 className="text-xl font-bold">Our Car Store</h3>
+        <h3 className="text-xl font-roboto text-gray-800 font-bold">
+          Our Car Store
+        </h3>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-[100%] ">

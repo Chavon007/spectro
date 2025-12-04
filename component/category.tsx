@@ -7,17 +7,17 @@ import Link from "next/link";
 const categoriesCard = [
   {
     name: "Luxury Cars",
-    link: "/car",
+    link: "/categories",
     icon: <LiaCarSolid />,
   },
   {
     name: "Premium Jeans",
-    link: "/jeans",
+    link: "/categories",
     icon: <GiClothes />,
   },
   {
     name: "Accessories",
-    link: "/accessories",
+    link: "/categories",
     icon: <FaBagShopping />,
   },
 ];

@@ -57,7 +57,7 @@ function Trending() {
           </h3>
         </div>
 
-        <div className=" w-[92%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className=" w-[92%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {trendingNow.map((product, index) => (
             <div
               key={index}
@@ -76,7 +76,7 @@ function Trending() {
                   alt={product.name}
                   width={1000}
                   height={100}
-                  style={{ width: "100%", height: "350px" }}
+                  style={{ width: "100%", height: "200px" }}
                   className="object-cover rounded-t-xl"
                 />
               </div>
@@ -89,7 +89,7 @@ function Trending() {
                 </p>
                 <Link
                   href={product.link}
-                  className=" bg-red-600 text-white font-lora  hover:bg-red-500 transition-colors flex justify-center mt-[30px] rounded-2xl w-[50%] mx-auto p-[10px]"
+                  className=" bg-red-600 text-white font-lora  hover:bg-red-500 transition-colors flex justify-center mt-[30px] rounded-2xl text-sm w-[60%] mx-auto p-[10px]"
                 >
                   Order via Whatsapp
                 </Link>
