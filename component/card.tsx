@@ -8,11 +8,11 @@ type productCard = {
   image: string[];
   price: number;
   link: string;
-  viewDetails: string;
+  viewDetails: () => void;
 };
 
 function Card({ name, image, price, link, viewDetails }: productCard) {
-  const [currrentImage, setCurrentImage] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
   const [hover, setHover] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function Card({ name, image, price, link, viewDetails }: productCard) {
         onMouseLeave={() => setHover(false)}
       >
         <Image
-          src={image[currrentImage]}
+          src={image[currentImage]}
           alt={name}
           width={1000}
           height={1000}
@@ -51,7 +51,7 @@ function Card({ name, image, price, link, viewDetails }: productCard) {
         <p className="text-sm font-semibold font-inter mt-[10px] text-blue-700">
           ₦{price.toLocaleString()}
         </p>
-        <a href={viewDetails}>View Details</a>
+        <button onClick={viewDetails}>View Details</button>
         <Link
           href={link}
           className="mt-3 font-lora block text-center bg-red-600 hover:bg-red-500 transition-colors text-white py-2 rounded-lg"
