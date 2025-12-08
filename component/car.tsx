@@ -1,5 +1,6 @@
 import Card from "./card";
 import { FaCar } from "react-icons/fa";
+import carsdetails from "./carDetails";
 
 const carproduct = [
   {
@@ -176,7 +177,9 @@ function Cars() {
         <span className="text-gray-700 text-3xl">
           <FaCar />
         </span>
-        <h3 className="text-xl font-roboto text-gray-800 font-bold">Our Car Store</h3>
+        <h3 className="text-xl font-roboto text-gray-800 font-bold">
+          Our Car Store
+        </h3>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-[100%] ">

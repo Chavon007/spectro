@@ -8,9 +8,10 @@ type productCard = {
   image: string[];
   price: number;
   link: string;
+  viewDetails: string;
 };
 
-function Card({ name, image, price, link }: productCard) {
+function Card({ name, image, price, link, viewDetails }: productCard) {
   const [currrentImage, setCurrentImage] = useState(0);
   const [hover, setHover] = useState(false);
 
@@ -36,11 +37,9 @@ function Card({ name, image, price, link }: productCard) {
         <Image
           src={image[currrentImage]}
           alt={name}
-         width={1000}
-         height={1000}
-         style={{width:"100%", height:"300px"}}
-          className="object-cover"
-          
+          width={1000}
+          height={1000}
+          className="object-cover w-full h-[300px] md:h-[200px]"
         />
       </div>
 
@@ -52,7 +51,7 @@ function Card({ name, image, price, link }: productCard) {
         <p className="text-sm font-semibold font-inter mt-[10px] text-blue-700">
           ₦{price.toLocaleString()}
         </p>
-
+        <a href={viewDetails}>View Details</a>
         <Link
           href={link}
           className="mt-3 font-lora block text-center bg-red-600 hover:bg-red-500 transition-colors text-white py-2 rounded-lg"
