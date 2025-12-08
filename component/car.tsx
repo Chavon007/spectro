@@ -26,6 +26,9 @@ function Cars() {
   const [selectedCar, setSelectedCar] = useState<CarType | null>(null);
   const [currentImage, setCurrentImage] = useState(0);
   const [hover, setHover] = useState(false);
+  const openCarDetails = (car: CarType) => {
+    setSelectedCar(car);
+  };
 
   useEffect(() => {
     if (!hover || !selectedCar) {
@@ -60,52 +63,83 @@ function Cars() {
             name={car.name}
             price={car.price}
             link={car.link}
-            viewDetails={() => setSelectedCar(car)}
+            viewDetails={() => openCarDetails(car)}
           />
         ))}
       </div>
 
       <Modal isOpen={!!selectedCar} onClose={() => setSelectedCar(null)}>
         {selectedCar && (
-          <div>
-            <h4>
-              <span>{selectedCar.model}</span>
-              {selectedCar.year}
+          <div className="space-y-4">
+            {/* Title */}
+            <h4 className="text-xl font-semibold flex items-center gap-2">
+              <span className="text-indigo-600">{selectedCar.model}</span>
+              <span className="text-gray-700">({selectedCar.year})</span>
             </h4>
-            <p
-              className="relative w-full"
+
+            {/* Image */}
+            <div
+              className="relative w-full rounded-lg overflow-hidden border"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
             >
-              {" "}
               <Image
                 src={selectedCar.image[currentImage]}
                 alt={selectedCar.model}
-                width={100}
-                height={100}
+                width={1000}
+                height={1000}
+                className="object-cover w-full h-[300px] md:h-[250px]"
               />
-            </p>
-            <p>
-              <span>Miles covered: {selectedCar.mileage}</span>
-              <span>Condition: {selectedCar.condition}</span>
-            </p>
+            </div>
 
-            <ul>
-              {selectedCar.features.map((f, i) => (
-                <li key={i}>{f}</li>
-              ))}
-            </ul>
+            {/* Mileage & Condition */}
+            <div className="grid grid-cols-2 gap-3 text-gray-700">
+              <p>
+                <span className="font-semibold">Miles covered:</span>{" "}
+                {selectedCar.mileage}
+              </p>
+              <p>
+                <span className="font-semibold">Condition:</span>{" "}
+                {selectedCar.condition}
+              </p>
+            </div>
 
-            <p>
-              <span>Engine: {selectedCar.engine}</span>
-              <span>VIN NUMBER: {selectedCar.vinNum}</span>
-            </p>
-            <p>
-              <span>Location: {selectedCar.location}</span>
-              <span>
-                Message: <Link href={selectedCar.link}>Whatsapp</Link>{" "}
-              </span>
-            </p>
+            {/* Features */}
+            <div>
+              <h5 className="font-semibold">Features</h5>
+
+              <ul className="list-disc list-inside space-y-1 text-gray-600">
+                {selectedCar.features.map((f, i) => (
+                  <li key={i}>{f}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Engine + VIN */}
+            <div className="grid grid-cols-2 gap-3 text-gray-700">
+              <p>
+                <span className="font-semibold">Engine:</span>{" "}
+                {selectedCar.engine}
+              </p>
+              <p>
+                <span className="font-semibold">VIN:</span> {selectedCar.vinNum}
+              </p>
+            </div>
+
+            {/* Location & Link */}
+            <div className="flex justify-between items-center">
+              <p className="text-gray-700">
+                <span className="font-semibold">Location: </span>
+                {selectedCar.location}
+              </p>
+
+              <Link
+                href={selectedCar.link}
+                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+              >
+                WhatsApp
+              </Link>
+            </div>
           </div>
         )}
       </Modal>

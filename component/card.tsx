@@ -51,7 +51,12 @@ function Card({ name, image, price, link, viewDetails }: productCard) {
         <p className="text-sm font-semibold font-inter mt-[10px] text-blue-700">
           ₦{price.toLocaleString()}
         </p>
-        <button onClick={viewDetails}>View Details</button>
+        <button
+          className="text-sm text-blue-300 cursor-pointer hover:underline hover:text-blue-400"
+          onClick={viewDetails}
+        >
+          View Details
+        </button>
         <Link
           href={link}
           className="mt-3 font-lora block text-center bg-red-600 hover:bg-red-500 transition-colors text-white py-2 rounded-lg"
