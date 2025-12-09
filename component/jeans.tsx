@@ -93,7 +93,7 @@ function Jeans() {
                 alt={selectedJean.name}
                 width={1000}
                 height={1000}
-                className="object-cover w-full h-[300px] md:h-[250px]"
+                className="object-contain w-full h-[300px] md:h-[250px]"
               />
             </div>
 
