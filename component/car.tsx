@@ -5,6 +5,7 @@ import carDetails from "./carDetails";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import useSearch from "./search";
 
 type CarType = {
   name: string;
@@ -23,6 +24,7 @@ type CarType = {
 };
 
 function Cars() {
+  const { query, setQuery, filteredItems } = useSearch(carDetails);
   const [selectedCar, setSelectedCar] = useState<CarType | null>(null);
   const [currentImage, setCurrentImage] = useState(0);
   const [hover, setHover] = useState(false);
@@ -55,8 +57,17 @@ function Cars() {
         </h3>
       </div>
 
+      <div className="mb-6 w-full">
+        <input
+          type="text"
+          placeholder="Search for cars..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:outline-none  transition-all text-gray-700 placeholder-gray-400"
+        />
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-[100%] ">
-        {carDetails.map((car: CarType, i: number) => (
+        {filteredItems.map((car: CarType, i: number) => (
           <Card
             key={i}
             image={car.image}

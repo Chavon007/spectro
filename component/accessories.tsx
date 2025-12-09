@@ -5,6 +5,7 @@ import accessoriesWear from "./accessoriesDetails";
 import { useState, useEffect, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import useSearch from "./search";
 
 type accessoriesType = {
   name: string;
@@ -26,6 +27,7 @@ type accessoriesType = {
 };
 
 function Accessories() {
+  const { query, setQuery, filteredItems } = useSearch(accessoriesWear);
   const [selectedAccessories, setSelectedAccessories] =
     useState<accessoriesType | null>(null);
 
@@ -60,8 +62,18 @@ function Accessories() {
         </h3>
       </div>
 
+      <div className="mb-6 w-full">
+        <input
+          type="text"
+          placeholder="Search for accessories..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="w-full px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:outline-none  transition-all text-gray-700 placeholder-gray-400"
+        />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-[100%] ">
-        {accessoriesWear.map((acc: any, index: number) => (
+        {filteredItems.map((acc: any, index: number) => (
           <Card
             key={index}
             image={acc.image}
@@ -73,14 +85,20 @@ function Accessories() {
         ))}
       </div>
 
-      <Modal isOpen={!!selectedAccessories} onClose={() => setSelectedAccessories(null)}>
-        {selectedAccessories
-         && (
+      <Modal
+        isOpen={!!selectedAccessories}
+        onClose={() => setSelectedAccessories(null)}
+      >
+        {selectedAccessories && (
           <div className="space-y-4">
             {/* Title */}
             <h4 className="text-xl font-semibold flex items-center gap-2">
-              <span className="text-indigo-600">{selectedAccessories.name}</span>
-              <span className="text-gray-700">({selectedAccessories.brand})</span>
+              <span className="text-indigo-600">
+                {selectedAccessories.name}
+              </span>
+              <span className="text-gray-700">
+                ({selectedAccessories.brand})
+              </span>
             </h4>
 
             {/* Image */}
@@ -139,7 +157,8 @@ function Accessories() {
 
             <div className="text-gray-700 space-y-1">
               <p>
-                <span className="font-semibold">Type:</span> {selectedAccessories.type}
+                <span className="font-semibold">Type:</span>{" "}
+                {selectedAccessories.type}
               </p>
               <p>
                 <span className="font-semibold">Style:</span>{" "}
